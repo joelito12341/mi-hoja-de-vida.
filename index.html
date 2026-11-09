@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>José Manuel Rodríguez | Hoja de vida</title>
+<style>
+@property --s{syntax:"<integer>";initial-value:0;inherits:false}
+:root{--lime:#b8ff3d;--pink:#ff3d81;--win:rgba(22,10,44,.78);--bar:rgba(255,255,255,.08);--txt:#f4f0ff;--soft:#b9aedb}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--txt);line-height:1.6;min-height:100vh;padding:28px 18px 90px;overflow-x:hidden;
+background:linear-gradient(135deg,#1a0536,#5a1a9a 45%,#c2185b 100%) fixed}
+.mono{font-family:Consolas,"Courier New",monospace}
+/* arranque */
+.boot{position:fixed;inset:0;background:#000;z-index:50;padding:32px;font:1rem Consolas,"Courier New",monospace;color:var(--lime);pointer-events:none;animation:bootout .5s 2.6s forwards}
+.boot div{overflow:hidden;white-space:nowrap;width:0;margin-bottom:6px;animation:type .5s steps(30,end) forwards}
+.boot div:nth-child(1){animation-delay:.2s;--w:30ch}.boot div:nth-child(2){animation-delay:.7s;--w:30ch}.boot div:nth-child(3){animation-delay:1.2s;--w:30ch}.boot div:nth-child(4){animation-delay:1.7s;--w:30ch}
+@keyframes type{to{width:var(--w)}}
+@keyframes bootout{to{opacity:0;visibility:hidden}}
+/* binario de fondo */
+.bits{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.bits span{position:absolute;top:-120px;font:700 1rem Consolas,monospace;color:var(--lime);opacity:.0;writing-mode:vertical-rl;letter-spacing:.3em;animation:rain 12s linear infinite}
+.bits span:nth-child(1){left:8%}.bits span:nth-child(2){left:24%;animation-delay:3s}.bits span:nth-child(3){left:41%;animation-delay:6s}
+.bits span:nth-child(4){left:58%;animation-delay:1s}.bits span:nth-child(5){left:74%;animation-delay:8s}.bits span:nth-child(6){left:90%;animation-delay:4s}
+@keyframes rain{10%{opacity:.22}90%{opacity:.1}100%{transform:translateY(120vh);opacity:0}}
+.desk{position:relative;z-index:1;max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+/* ventanas */
+.win{background:var(--win);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.4);opacity:0;animation:pop .6s cubic-bezier(.2,1.4,.4,1) forwards;transition:transform .3s,box-shadow .3s}
+.win:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.55),0 0 0 2px var(--lime)}
+.win:nth-child(1){animation-delay:2.6s}.win:nth-child(2){animation-delay:2.8s}.win:nth-child(3){animation-delay:3s}.win:nth-child(4){animation-delay:3.2s}.win:nth-child(5){animation-delay:3.4s}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(30px)}to{opacity:1;transform:none}}
+.title{display:flex;align-items:center;gap:7px;padding:9px 14px;background:var(--bar);font:.82rem Consolas,monospace;color:var(--soft)}
+.title i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.title i:nth-child(2){background:#febc2e}.title i:nth-child(3){background:#28c840}
+.title span{margin-left:8px}
+.body{padding:20px 24px}
+.hero{grid-column:1/-1}
+.hero .body{padding:34px 28px}
+.big{font:700 clamp(2.6rem,9vw,5.6rem)/1 "Arial Narrow",Impact,sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.big em{font-style:normal;color:var(--lime);display:block}
+.cmd{margin-top:18px;font:1rem Consolas,monospace;color:var(--lime)}
+.cmd .t{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0;border-right:2px solid var(--lime);animation:type 1.6s 3.4s steps(26,end) forwards,caret .8s 5s step-end infinite}
+.cmd .t{--w:26ch}
+@keyframes caret{50%{border-color:transparent}}
+.w3{grid-column:span 3}.w2{grid-column:span 2}.w4{grid-column:span 4}.w6{grid-column:1/-1}
+h2{font:700 1.5rem "Arial Narrow",Impact,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;color:var(--lime)}
+p{color:#e4ddf7;max-width:62ch}
+.row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.row span{color:var(--soft)}
+.blank{color:var(--pink);font:.9rem Consolas,monospace;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+/* barras de carga */
+.load{margin:14px 0}
+.load div{display:flex;justify-content:space-between;font:.9rem Consolas,monospace}
+.load i{display:block;height:12px;border:1px solid var(--lime);margin-top:4px;padding:2px}
+.load i::after{content:"";display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--lime) 0 8px,transparent 8px 11px);animation:fill 1.8s ease-out forwards;animation-delay:3.6s}
+@keyframes fill{to{width:var(--v)}}
+/* tarjetas */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid rgba(255,255,255,.2);padding:16px;border-radius:8px;background:rgba(255,255,255,.04);transition:transform .25s,background .25s,border-color .25s}
+.card:hover{transform:translateY(-6px) rotate(-1.5deg);background:rgba(184,255,61,.12);border-color:var(--lime)}
+.card b{display:block;font:700 1.25rem "Arial Narrow",Impact,sans-serif;text-transform:uppercase}
+.card span{font-size:.9rem;color:var(--soft)}
+.card em{font-style:normal;font-size:1.8rem;display:block;transition:transform .5s}
+.card:hover em{transform:rotate(360deg) scale(1.2)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{border:1px solid var(--pink);color:#ffd0e1;padding:4px 14px;border-radius:99px;font:.9rem Consolas,monospace;transition:background .2s,color .2s,transform .2s}
+.tags span:hover{background:var(--pink);color:#fff;transform:scale(1.1)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btns button{background:var(--lime);color:#1a0536;border:0;border-radius:6px;padding:8px 18px;font:700 .9rem Consolas,monospace;cursor:pointer;transition:transform .2s,background .2s}
+.btns button:hover{transform:translateY(-3px);background:#fff}
+.btns button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+/* barra de tareas */
+.task{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(12,4,26,.88);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.15);font:.85rem Consolas,monospace}
+.task b{background:var(--lime);color:#1a0536;padding:3px 12px;border-radius:5px}
+.task span{color:var(--soft);padding:3px 10px;border-bottom:2px solid var(--pink)}
+.task .up{margin-left:auto;border:0;color:var(--lime);counter-reset:s var(--s);animation:upt 3600s linear infinite}
+.task .up::after{content:"uptime " counter(s) " s"}
+@keyframes upt{to{--s:3600}}
+@media (max-width:820px){
+.w3,.w2,.w4{grid-column:1/-1}.cards{grid-template-columns:1fr}.boot{font-size:.85rem}.task span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.boot,.bits{display:none}.win{opacity:1}.cmd .t{width:auto}.load i::after{width:var(--v)}.task .up::after{content:"uptime activo"}}
+@media print{.boot,.bits,.task,.btns{display:none}*{animation:none!important}.win{opacity:1;background:#fff;color:#000;box-shadow:none;border-color:#999}p,.card span,.row span{color:#000}h2{color:#333}body{background:#fff}.load i::after{width:var(--v)}.cmd .t{width:auto}}
+</style>
+</head>
+<body>
+<div class="boot" aria-hidden="true">
+  <div>[ OK ] Iniciando sistema...</div>
+  <div>[ OK ] Cargando perfil: JMR</div>
+  <div>[ OK ] Valores: juicioso, serio</div>
+  <div>[ OK ] Bienvenido, visitante.</div>
+</div>
+<div class="bits" aria-hidden="true"><span>0101101</span><span>1100010</span><span>0011101</span><span>1010011</span><span>0110100</span><span>1001011</span></div>
+
+<main class="desk">
+  <section class="win hero">
+    <div class="title"><i></i><i></i><i></i><span>hoja_de_vida.exe</span></div>
+    <div class="body">
+      <h1 class="big">José Manuel<em>Rodríguez</em></h1>
+      <p class="cmd" aria-hidden="true">&gt; <span class="t">whoami → futuro ingeniero</span></p>
+    </div>
+  </section>
+
+  <section class="win w4">
+    <div class="title"><i></i><i></i><i></i><span>perfil.txt</span></div>
+    <div class="body">
+      <h2>Perfil</h2>
+      <p>Soy una persona juiciosa y responsable, con gran interés por el mundo de los sistemas. Me gusta aprender, cumplir con mis compromisos y hacer las cosas bien.</p>
+    </div>
+  </section>
+
+  <section class="win w2">
+    <div class="title"><i></i><i></i><i></i><span>datos.sys</span></div>
+    <div class="body">
+      <h2>Datos</h2>
+      <!-- Reemplaza cada "por completar" con tu dato real -->
+      <div class="row"><span>Ciudad</span><i class="blank">por completar</i></div>
+      <div class="row"><span>Teléfono</span><i class="blank">por completar</i></div>
+      <div class="row"><span>Correo</span><i class="blank">por completar</i></div>
+    </div>
+  </section>
+
+  <section class="win w3">
+    <div class="title"><i></i><i></i><i></i><span>valores.sh</span></div>
+    <div class="body">
+      <h2>Valores cargados</h2>
+      <div class="load"><div><span>Juicioso</span><span>100%</span></div><i style="--v:100%"></i></div>
+      <div class="load"><div><span>Responsable</span><span>100%</span></div><i style="--v:100%"></i></div>
+      <div class="load"><div><span>Pasión por los sistemas</span><span>100%</span></div><i style="--v:100%"></i></div>
+    </div>
+  </section>
+
+  <section class="win w3">
+    <div class="title"><i></i><i></i><i></i><span>intereses/</span></div>
+    <div class="body">
+      <h2>Intereses</h2>
+      <div class="tags"><span>Sistemas</span><span>Tecnología</span><span>Computadores</span><span>Aprender cosas nuevas</span></div>
+      <h2 style="margin-top:18px">Formación</h2>
+      <div class="row"><span>Institución</span><i class="blank">por completar</i></div>
+      <div class="row"><span>Grado</span><i class="blank">por completar</i></div>
+    </div>
+  </section>
+
+  <section class="win w6" style="animation-delay:3.6s">
+    <div class="title"><i></i><i></i><i></i><span>habilidades.app</span></div>
+    <div class="body">
+      <h2>Habilidades</h2>
+      <div class="cards">
+        <div class="card"><em>🧠</em><b>Juicioso</b><span>Atento y ordenado en lo que hago.</span></div>
+        <div class="card"><em>✅</em><b>Responsable</b><span>Cumplo con mis tareas y compromisos.</span></div>
+        <div class="card"><em>💻</em><b>Sistemas</b><span>Interés y gusto por la informática.</span></div>
+      </div>
+      <div class="btns" style="margin-top:18px"><button type="button" onclick="window.print()">Imprimir hoja de vida</button></div>
+    </div>
+  </section>
+</main>
+
+<div class="task" aria-hidden="true"><b>JM</b><span>perfil.txt</span><span>valores.sh</span><span>habilidades.app</span><span class="up"></span></div>
+</body>
+</html>
